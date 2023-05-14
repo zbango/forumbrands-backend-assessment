@@ -1,0 +1,33 @@
+app: backend-assessment
+service: notes
+useDotenv: true
+package:
+  individually: true
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: us-east-1
+  timeout: 5
+  environment:
+    DB_HOST: ${env:DB_HOST}
+    DB_USER: ${env:DB_USER}
+    DB_PASSWORD: ${env:DB_PASSWORD}
+    DB_NAME: ${env:DB_NAME}
+    DB_PORT: ${env:DB_PORT}
+
+functions:
+  notes:
+    handler: src/modules/notes/handler.handler
+    events:
+        - http:
+            path: /notes
+            method: ANY
+        - http:
+            path: /notes/{proxy+}
+            method: ANY
+
+plugins:
+  - serverless-offline
+  - serverless-dotenv-plugin
+  - serverless-plugin-typescript
