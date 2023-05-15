@@ -37,6 +37,12 @@ Install the project dependencies by running:
 
 ```npm install```
 
+### Running migration
+
+Run the migration command to create the notes table in Postgress DB
+
+```npm run migration:run```
+
 ### Running the API locally
 
 Run the API locally using the Serverless Offline plugin:
@@ -44,12 +50,6 @@ Run the API locally using the Serverless Offline plugin:
 ```npm start```
 
 This command will start the local API server on port 3000 by default. It's set up with Nodemon and has hotloading enabled.
-
-### Running migration
-
-Run the migration command to create the notes table in Postgress DB
-
-```npm run migration:run```
 
 ### Testing
 
