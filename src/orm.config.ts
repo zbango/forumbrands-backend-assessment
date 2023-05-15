@@ -3,6 +3,8 @@ dotenv.config()
 import "reflect-metadata"
 import { DataSource } from "typeorm"
 import { SnakeNamingStrategy } from 'typeorm-naming-strategies'
+import { Note } from './entities/notes.entity'
+import { CreateNotesTable1684113229559 } from './migrations/1684113229559-CreateNotesTable'
 
 const AppDataSource = new DataSource({
     type: "postgres",
@@ -15,8 +17,8 @@ const AppDataSource = new DataSource({
     synchronize: false,
     logging: true,
     namingStrategy: new SnakeNamingStrategy(),
-    entities: [__dirname + "/../src/entities/*.entity{.ts,.js}"],
-    migrations: [__dirname + "/../src/migrations/*{.ts,.js}"],
+    entities: [Note],
+    migrations: [CreateNotesTable1684113229559],
 })
 
 export const getDataSource = async () => {
